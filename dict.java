@@ -13,7 +13,7 @@ class wordGood {
 	int yGood;
 	wordGood(String s, int b, int j, int y) {
 		word = s;
-		bgood = b;
+		bGood = b;
 		jGood = j;
 		yGood = y;
 	}
@@ -32,6 +32,8 @@ public class dict {
 	
 	public static void main(String[] args) throws Exception {		
 		ArrayList wordlist = new ArrayList();
+		
+		DataSave d = new DataSave();
 		
 		//the whole frame
 		JFrame frame = new JFrame("Dictionary");
@@ -178,7 +180,7 @@ public class dict {
 		baiduGood.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				numOfBaiduGood++;
-				wordGood = new wordGood(userInput.getText(), numOfBaiduGood, numOfJinshanGood, numOfYoudaoGood);
+				wordGood w = new wordGood(userInput.getText(), numOfBaiduGood, numOfJinshanGood, numOfYoudaoGood);
 				
 				//TODO: update the wordGood to Internet
 			}
