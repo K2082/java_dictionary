@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.applet.*;
 import java.awt.*;
@@ -33,13 +34,19 @@ public class dict {
 	public static void main(String[] args) throws Exception {		
 		ArrayList wordlist = new ArrayList();
 		
-		DataSave d = new DataSave();
+		DataSave d = DataSave.getInstance();
 		
 		//the whole frame
 		JFrame frame = new JFrame("Dictionary");
 		frame.setSize(550, 400);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				d.logout();
+				System.exit(0);
+			}
+		});
 		
 		//place to input words and click button
 		JPanel inputArea = new JPanel();
