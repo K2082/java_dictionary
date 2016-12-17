@@ -1,10 +1,10 @@
 import java.sql.*;
 
 public class DataSave{
-	private String userName= "root";
-	private String password = "123456";
+	private String userName= "sql9149763";
+	private String password = "GgvKIMsKyP";
 	private String driver = "com.mysql.jdbc.Driver";
-	private String url="jdbc:mysql://localhost:3306/dict?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+	private String url="jdbc:mysql://sql9.freemysqlhosting.net/sql9149763?useUnicode=true&characterEncoding=utf-8&useSSL=false";
 	private String uname = null;
 	Connection conn;
 	Statement sta;
@@ -41,24 +41,24 @@ public class DataSave{
 	 */
 	public String[][] showcards()
 	{
-		String[][] cards = null;
+		String[][] card = null;
 		
 		try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
             
-            String sql = "SELECT * FROM cards WHERE rec='" + uname + "';";
+            String sql = "SELECT * FROM card WHERE rec='" + uname + "';";
             ResultSet rs = sta.executeQuery(sql);
             rs.last();
             int n = rs.getRow();
             rs.first();
-            cards = new String[2][n];
+            card = new String[2][n];
             for(int i=0; i < n; i++)
             {
             	
-            	cards[0][i] = rs.getString(2);
-            	cards[1][i] = rs.getString(3);
+            	card[0][i] = rs.getString(2);
+            	card[1][i] = rs.getString(3);
             	rs.next();
             	
             }
@@ -69,7 +69,7 @@ public class DataSave{
             e.printStackTrace();
         }
 		
-		return cards;
+		return card;
 	}
 	
 	/*
@@ -82,7 +82,7 @@ public class DataSave{
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
             
-            String sql = "INSERT INTO cards(word, send, rec) VALUES ('" + word + "', '" + uname + "', '" + reciever + "');";
+            String sql = "INSERT INTO card(word, send, rec) VALUES ('" + word + "', '" + uname + "', '" + reciever + "');";
             sta.execute(sql);
             conn.close();
             
@@ -103,7 +103,7 @@ public class DataSave{
             String sql;
             for(int i = 0; i < reciever.length; i++)
             {
-	            sql = "INSERT INTO cards(word, send, rec) VALUES ('" + word + "', '" + uname + "', '" + reciever[i] + "');";
+	            sql = "INSERT INTO card(word, send, rec) VALUES ('" + word + "', '" + uname + "', '" + reciever[i] + "');";
 	            sta.execute(sql);
             }
             conn.close();
@@ -284,18 +284,18 @@ public class DataSave{
             Class.forName(driver);
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
-            String sql = "SELECT * FROM words WHERE word='" + word + "';";
+            String sql = "SELECT * FROM word WHERE word='" + word + "';";
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next())
             {
             	int temp = rs.getInt("bgood");
             	temp++;
-            	sql = "UPDATE words SET bgood=" + temp + " WHERE word='" + word + "';";
+            	sql = "UPDATE word SET bgood=" + temp + " WHERE word='" + word + "';";
             	sta.execute(sql);
             }
             else
             {
-            	sql = "INSERT INTO words(word,bgood) VALUES('" + word + "',1);";
+            	sql = "INSERT INTO word(word,bgood) VALUES('" + word + "',1);";
             	sta.execute(sql);
             }
             conn.close();
@@ -314,18 +314,18 @@ public class DataSave{
             Class.forName(driver);
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
-            String sql = "SELECT * FROM words WHERE word='" + word + "';";
+            String sql = "SELECT * FROM word WHERE word='" + word + "';";
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next())
             {
             	int temp = rs.getInt("jgood");
             	temp++;
-            	sql = "UPDATE words SET jgood=" + temp + " WHERE word='" + word + "';";
+            	sql = "UPDATE word SET jgood=" + temp + " WHERE word='" + word + "';";
             	sta.execute(sql);
             }
             else
             {
-            	sql = "INSERT INTO words(word,jgood) VALUES('" + word + "',1);";
+            	sql = "INSERT INTO word(word,jgood) VALUES('" + word + "',1);";
             	sta.execute(sql);
             }
             conn.close();
@@ -344,18 +344,18 @@ public class DataSave{
             Class.forName(driver);
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
-            String sql = "SELECT * FROM words WHERE word='" + word + "';";
+            String sql = "SELECT * FROM word WHERE word='" + word + "';";
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next())
             {
             	int temp = rs.getInt("ygood");
             	temp++;
-            	sql = "UPDATE words SET ygood=" + temp + " WHERE word='" + word + "';";
+            	sql = "UPDATE word SET ygood=" + temp + " WHERE word='" + word + "';";
             	sta.execute(sql);
             }
             else
             {
-            	sql = "INSERT INTO words(word,ygood) VALUES('" + word + "',1);";
+            	sql = "INSERT INTO word(word,ygood) VALUES('" + word + "',1);";
             	sta.execute(sql);
             }
             conn.close();
@@ -374,7 +374,7 @@ public class DataSave{
             Class.forName(driver);
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
-            String sql = "SELECT * FROM words WHERE word='" + word + "';";
+            String sql = "SELECT * FROM word WHERE word='" + word + "';";
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next())
             {
@@ -397,7 +397,7 @@ public class DataSave{
             Class.forName(driver);
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
-            String sql = "SELECT * FROM words WHERE word='" + word + "';";
+            String sql = "SELECT * FROM word WHERE word='" + word + "';";
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next())
             {
@@ -421,7 +421,7 @@ public class DataSave{
             Class.forName(driver);
             conn = DriverManager.getConnection(url, userName, password);
             sta = conn.createStatement();
-            String sql = "SELECT * FROM words WHERE word='" + word + "';";
+            String sql = "SELECT * FROM word WHERE word='" + word + "';";
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next())
             {
